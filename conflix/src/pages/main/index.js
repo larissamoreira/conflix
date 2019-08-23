@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../../services/api';
+import { Link } from 'react-router-dom'
 import './styles.css'
 
 export default class Main extends Component {
@@ -48,7 +49,7 @@ export default class Main extends Component {
                 {this.state.applicants.map(applicant => (
                     <div key={applicant._id}>
                         <h2>{applicant.firstname}</h2>
-                        {/* <a href="">Acessar</a> */}
+                        <Link to={`/applicants/${applicant._id}`}>Acessar</Link>
                     </div>
                 ))}
                 <div className="actions">
