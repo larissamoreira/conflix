@@ -1,0 +1,33 @@
+.applicant-list {
+    max-width: 700px;
+    margin: 20px auto 0;
+    padding: 0 20px;
+}
+
+.applicant-list div {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.applicant-list div p {
+    font-size: 16px;
+    color: #999;
+    margin-top: 5px;
+    line-height: 24px;
+}
+
+.applicant-list div a {
+    height: 42px;
+    border-radius: 5px;
+    background: none;
+    color: rosybrown;
+    text-decoration: none;
+}
+
+.actions button[disabled] {
+    opacity: 0.5;
+    cursor: default;
+}
