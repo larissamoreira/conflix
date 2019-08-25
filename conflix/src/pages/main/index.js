@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import api from '../../services/api';
 import { Link } from 'react-router-dom'
 import './styles.css'
+import FormApplicant from '../../components/FormApllicant';
 
 export default class Main extends Component {
     state = {
@@ -45,18 +46,21 @@ export default class Main extends Component {
         const { page, applicantsInfo } = this.state;
 
         return (
-            <div className="applicant-list">
-                {this.state.applicants.map(applicant => (
-                    <div key={applicant._id}>
-                        <h2>{applicant.firstname}</h2>
-                        <Link to={`/applicants/${applicant._id}`}>Acessar</Link>
+            <React.Fragment>
+                <FormApplicant/>
+                <div className="applicant-list">
+                    {this.state.applicants.map(applicant => (
+                        <div key={applicant._id}>
+                            <h2>{applicant.firstname}</h2>
+                            <Link to={`/applicants/${applicant._id}`}>Acessar</Link>
+                        </div>
+                    ))}
+                    <div className="actions">
+                        <button disabled={page === 1} onClick={this.prevPage}>Back</button>
+                        <button disabled={page === applicantsInfo.pages} onClick={this.nextPage}>Next</button>
                     </div>
-                ))}
-                <div className="actions">
-                    <button disabled={page === 1} onClick={this.prevPage}>Back</button>
-                    <button disabled={page === applicantsInfo.pages} onClick={this.nextPage}>Next</button>
                 </div>
-            </div>
+            </React.Fragment>
         )
     }
 }
