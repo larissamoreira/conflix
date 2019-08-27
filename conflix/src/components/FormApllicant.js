@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import api from '../services/api';
+import { Input, Form, Button } from './styles';
+import Checkbox from './Checkbox';
 
 class FormApplicant extends Component {
     state = {
@@ -12,7 +14,12 @@ class FormApplicant extends Component {
         phone: 0,
         experience: '',
         specialskills: '',
-        interests: [],
+        interests: [
+            { id: 0, value: 'Short dramatic films by Confederation College', isChecked: false },
+            { id: 1, value: 'Commercials, music videos, experimental films by Confederation College', isChecked: false },
+            { id: 2, value: 'Other external community productions (non-college, unpaid)', isChecked: false },
+            { id: 3, value: 'Paid work - College or external (shorts, features, commercials, etc.)', isChecked: false },
+        ],
     }
 
     handleChange = event => {
@@ -31,31 +38,54 @@ class FormApplicant extends Component {
             phone: this.state.phone,
             experience: this.state.experience,
             specialskills: this.state.specialskills,
-            interests: this.state.interests,
+            interests: this.state.interests.filter(interest => interest.isChecked),
         }
 
         api.post('/applicants', { ...applicant })
             .then(res => {
-                console.log(res.data);
+                console.log(res);
             }).catch(err => {
                 console.log(err)
             })
     }
 
+    handleCheck = (event) => {
+        let interests = this.state.interests
+        interests.forEach(production => {
+            if (production.id == event.target.id) {
+                production.isChecked = event.target.checked;
+            }
+        })
+
+        this.setState({ interests: interests })
+    }
+
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                Firstname<input name="firstname" onChange={this.handleChange} />
-                Lastname<input name="lastname" onChange={this.handleChange} />
-                Age<input name="age" onChange={this.handleChange} />
-                Gender<input name="gender" onChange={this.handleChange} />
-                ParentsName<input name="parentsname" onChange={this.handleChange} />
-                Email<input name="email" onChange={this.handleChange} />
-                Phone<input name="phone" onChange={this.handleChange} />
-                specialskills<input name="specialskills" onChange={this.handleChange} />
-                interests<input name="interests" onChange={this.handleChange} />
-                <input type="submit" />
-            </form>
+            <Form onSubmit={this.handleSubmit}>
+                <Input name="firstname" onChange={this.handleChange} placeholder="First name" required />
+                <Input name="lastname" onChange={this.handleChange} placeholder="Last name" required />
+                <Input name="age" onChange={this.handleChange} placeholder="Age" required />
+                <div>
+                    <input type="radio" value="Male" name="gender" onChange={this.handleChange} /> Male
+                    <input type="radio" value="Female" name="gender" onChange={this.handleChange} /> Female
+                </div>
+                <Input name="parentsname" onChange={this.handleChange} placeholder="Parents name (-18)" />
+                <Input name="email" onChange={this.handleChange} placeholder="Email" required />
+                <Input name="phone" onChange={this.handleChange} placeholder="Phone" />
+                <Input name="specialskills" onChange={this.handleChange} placeholder="Special Skills" />
+                <p>
+                    Please select what productions you would be interested in taking part in:
+                </p>
+                {
+                    this.state.interests.map((production) => {
+                        return (
+                            <Checkbox handleClick={this.handleCheck} {...production} />
+                        )
+                    })
+                }
+                <Button primary>SUBMIT</Button>
+            </Form>
         )
     }
 }

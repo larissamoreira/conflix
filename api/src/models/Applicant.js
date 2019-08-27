@@ -33,7 +33,7 @@ const ApplicantSchema = new mongoose.Schema({
     specialskills: {
         type: String
     },
-    interests: [String]
+    interests: [Object]
 })
 
 ApplicantSchema.plugin(mongoosePaginate);

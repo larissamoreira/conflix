@@ -3,6 +3,9 @@ import api from '../../services/api';
 import { Link } from 'react-router-dom'
 import './styles.css'
 import FormApplicant from '../../components/FormApllicant';
+import { Title } from '../../components/styles';
+
+
 
 export default class Main extends Component {
     state = {
@@ -47,7 +50,8 @@ export default class Main extends Component {
 
         return (
             <React.Fragment>
-                <FormApplicant/>
+                <Title>Conflix Casting</Title>
+                <FormApplicant />
                 <div className="applicant-list">
                     {this.state.applicants.map(applicant => (
                         <div key={applicant._id}>
