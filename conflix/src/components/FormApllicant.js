@@ -73,6 +73,7 @@ class FormApplicant extends Component {
                 <Input name="parentsname" onChange={this.handleChange} placeholder="Parents name (-18)" />
                 <Input name="email" onChange={this.handleChange} placeholder="Email" required />
                 <Input name="phone" onChange={this.handleChange} placeholder="Phone" />
+                <Input name="experience" onChange={this.handleChange} placeholder="Casting experience" />
                 <Input name="specialskills" onChange={this.handleChange} placeholder="Special Skills" />
                 <p>
                     Please select what productions you would be interested in taking part in:

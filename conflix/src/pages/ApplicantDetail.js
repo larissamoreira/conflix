@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import api from '../../services/api';
+import api from '../services/api';
 
-export default class Applicant extends Component {
+export default class ApplicantDetail extends Component {
     state = {
         applicant: {}
     };
