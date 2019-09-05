@@ -1,8 +1,15 @@
 import styled, { css } from 'styled-components';
 
+export const Container = styled.div`
+    background: grey;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 600px;
+    margin: 0 auto; 
+`
 
 export const Title = styled.h1`
-    color: white;
+    color: tomato;
     text-align: center;
 `
 
@@ -21,15 +28,21 @@ export const Button = styled.button`
         background: tomato; 
         color: white;
     `}
+
+    ${props => props.disabled && css`
+    background: gray;
+    border: none; 
+    cursor: default;
+    `
+}
     `;
 
 export const Form = styled.form`
-    margin: 0 auto;
-    width: 80%;
     display: flex;
-    flex-direction: column;
+    height: 600px;
+    flex-flow: column wrap;
+    justify-content: space-around;
     
-
     @media(max-width: 768px) {
         width: 100%;
     }
@@ -37,9 +50,9 @@ export const Form = styled.form`
 
 export const Input = styled.input`
     padding: 0.5em;
-    margin: 0.5em;
     background: antiquewhite;
     color: darkslategray;
+    
     border: none;
     border-radius: 3px;
     &::placeholder {
@@ -50,3 +63,13 @@ export const Input = styled.input`
         outline: none;
     }
     `;
+
+export const WrapperInput = styled.div`
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+`
+
+export const WrapperInputRadio = styled(WrapperInput)`
+    width: 30%;
+`

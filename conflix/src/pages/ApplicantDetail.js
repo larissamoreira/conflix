@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import api from '../services/api';
+// import api from '../services/api';
 
 export default class ApplicantDetail extends Component {
-    state = {
-        applicant: {}
-    };
+    // state = {
+    //     applicant: {}
+    // };
 
-    async componentDidMount() {
-        const { id } = this.props.match.params;
-        const response = await api.get(`/applicants/${id}`)
-        this.setState({ applicant: response.data })
-    }
+    // async componentDidMount() {
+    //     const { id } = this.props.match.params;
+    //     const response = await api.get(`/applicants/${id}`)
+    //     this.setState({ applicant: response.data })
+    // }
 
     render() {
-        const { applicant } = this.state;
+        const { applicant } = this.props;
         return (
             <div className='applicant-info'>
                 <h1>{applicant.firstname} {applicant.lastname}</h1>

@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 50px;
         font-family: 'Quicksand', sans-serif;
         overflow: auto;
-        background: seagreen;
+        background: transparent;
         min-height: 90vh;
     }
 `;

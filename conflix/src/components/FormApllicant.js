@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import api from '../services/api';
-import { Input, Form, Button } from './styles';
+import { Input, Form, Button, WrapperInput, WrapperInputRadio, Container } from './styles';
 import Checkbox from './Checkbox';
 
 class FormApplicant extends Component {
@@ -62,14 +62,17 @@ class FormApplicant extends Component {
 
     render() {
         return (
+            <Container>
             <Form onSubmit={this.handleSubmit}>
-                <Input name="firstname" onChange={this.handleChange} placeholder="First name" required />
-                <Input name="lastname" onChange={this.handleChange} placeholder="Last name" required />
+                <WrapperInput>
+                    <Input name="firstname" onChange={this.handleChange} placeholder="First name" required />
+                    <Input name="lastname" onChange={this.handleChange} placeholder="Last name" required />
+                </WrapperInput>
                 <Input name="age" onChange={this.handleChange} placeholder="Age" required />
-                <div>
+                <WrapperInputRadio>
                     <input type="radio" value="Male" name="gender" onChange={this.handleChange} /> Male
                     <input type="radio" value="Female" name="gender" onChange={this.handleChange} /> Female
-                </div>
+                </WrapperInputRadio>
                 <Input name="parentsname" onChange={this.handleChange} placeholder="Parents name (-18)" />
                 <Input name="email" onChange={this.handleChange} placeholder="Email" required />
                 <Input name="phone" onChange={this.handleChange} placeholder="Phone" />
@@ -87,6 +90,7 @@ class FormApplicant extends Component {
                 }
                 <Button primary>SUBMIT</Button>
             </Form>
+            </Container>
         )
     }
 }
