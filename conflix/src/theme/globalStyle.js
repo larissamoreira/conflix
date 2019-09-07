@@ -12,10 +12,10 @@ const GlobalStyle = createGlobalStyle`
         @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
         max-width: 950px;
         margin: 0 auto;
-        padding: 50px;
-        font-family: 'Quicksand', sans-serif;
+        padding: 10px;
+        font-family: monospace;
         overflow: auto;
-        background: transparent;
+        background: #313137;
         min-height: 90vh;
     }
 `;

@@ -63,33 +63,38 @@ class FormApplicant extends Component {
     render() {
         return (
             <Container>
-            <Form onSubmit={this.handleSubmit}>
-                <WrapperInput>
-                    <Input name="firstname" onChange={this.handleChange} placeholder="First name" required />
-                    <Input name="lastname" onChange={this.handleChange} placeholder="Last name" required />
-                </WrapperInput>
-                <Input name="age" onChange={this.handleChange} placeholder="Age" required />
-                <WrapperInputRadio>
-                    <input type="radio" value="Male" name="gender" onChange={this.handleChange} /> Male
-                    <input type="radio" value="Female" name="gender" onChange={this.handleChange} /> Female
-                </WrapperInputRadio>
-                <Input name="parentsname" onChange={this.handleChange} placeholder="Parents name (-18)" />
-                <Input name="email" onChange={this.handleChange} placeholder="Email" required />
-                <Input name="phone" onChange={this.handleChange} placeholder="Phone" />
-                <Input name="experience" onChange={this.handleChange} placeholder="Casting experience" />
-                <Input name="specialskills" onChange={this.handleChange} placeholder="Special Skills" />
-                <p>
-                    Please select what productions you would be interested in taking part in:
+                <Form onSubmit={this.handleSubmit}>
+                    <WrapperInput>
+                        <Input name="firstname" onChange={this.handleChange} placeholder="First name" required />
+                        <Input name="lastname" onChange={this.handleChange} placeholder="Last name" required />
+                        <Input name="age" onChange={this.handleChange} placeholder="Age" required />
+                    </WrapperInput>
+
+                    <WrapperInputRadio>
+                        <label>
+                            <input type="radio" value="Male" name="gender" onChange={this.handleChange} /> Male
+                        </label>
+                        <label>
+                            <input type="radio" value="Female" name="gender" onChange={this.handleChange} /> Female
+                        </label>
+                    </WrapperInputRadio>
+                    <Input name="parentsname" onChange={this.handleChange} placeholder="Parents name (-18)" />
+                    <Input name="email" onChange={this.handleChange} placeholder="Email" required />
+                    <Input name="phone" onChange={this.handleChange} placeholder="Phone" />
+                    <Input name="experience" onChange={this.handleChange} placeholder="Casting experience" />
+                    <Input name="specialskills" onChange={this.handleChange} placeholder="Special Skills" />
+                    <p>
+                        Please select what productions you would be interested in taking part in:
                 </p>
-                {
-                    this.state.interests.map((production) => {
-                        return (
-                            <Checkbox handleClick={this.handleCheck} {...production} />
-                        )
-                    })
-                }
-                <Button primary>SUBMIT</Button>
-            </Form>
+                    {
+                        this.state.interests.map((production) => {
+                            return (
+                                <Checkbox handleClick={this.handleCheck} {...production} />
+                            )
+                        })
+                    }
+                    <Button>SUBMIT</Button>
+                </Form>
             </Container>
         )
     }

@@ -41,18 +41,23 @@ export default class ListApplicants extends Component {
         const response = await api.get(`/applicants?page=${page}`)
         let { docs, ...applicantsInfo } = response.data;
 
-        docs = this.state.gender === 'All' ? docs : docs.filter(a => a.gender == this.state.gender)
+        docs = this.state.gender === 'All' ? docs : docs.filter(applicant => applicant.gender == this.state.gender)
 
-        let filteredProductions = this.state.interests.filter(interest => interest.isChecked);
+        let productionsChecked = this.state.interests.filter(interest => interest.isChecked);
 
         let filteredDocs = []
-
-        filteredProductions.length !== 0 ?
-            filteredProductions.map(production =>
-                docs.map(doc => doc.interests.map(
-                    interest => interest.value == production.value ? filteredDocs.push(doc) : ''
-                ))
-            ) : filteredDocs = docs
+        productionsChecked.length !== 0 ?
+            productionsChecked.map(production =>
+                docs.map(doc =>
+                    doc.interests.map(interest => (
+                        interest.value == production.value?
+                            filteredDocs.push(doc)
+                            : ''
+                    )
+                    )
+                )
+            )
+            : filteredDocs = docs
 
         this.setState({ applicants: filteredDocs, applicantsInfo, page });
     }
@@ -82,7 +87,7 @@ export default class ListApplicants extends Component {
         return (
             <React.Fragment>
                 <Title>Submissions</Title>
-                <Filter interests={this.state.interests} handleCheck={this.handleCheck} handleChange={this.handleChange}/>
+                <Filter interests={this.state.interests} handleCheck={this.handleCheck} handleChange={this.handleChange} />
                 <List>
                     {this.state.applicants.map(applicant => (
                         <ListDetail key={applicant._id}>
