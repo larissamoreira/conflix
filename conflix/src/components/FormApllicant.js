@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import api from '../services/api';
-import { Input, Form, Button, WrapperInput, WrapperInputRadio, Container } from './styles';
+import { Input, Form, Button, WrapperInput, WrapperInputRadio, Container, TextArea, Label } from './styles';
 import Checkbox from './Checkbox';
 
 class FormApplicant extends Component {
@@ -64,28 +64,36 @@ class FormApplicant extends Component {
         return (
             <Container>
                 <Form onSubmit={this.handleSubmit}>
+                    <Label> > Name *</Label>
                     <WrapperInput>
+
                         <Input name="firstname" onChange={this.handleChange} placeholder="First name" required />
                         <Input name="lastname" onChange={this.handleChange} placeholder="Last name" required />
-                        <Input name="age" onChange={this.handleChange} placeholder="Age" required />
                     </WrapperInput>
-
+                    <Label> > Age</Label>
+                    <Input name="age" onChange={this.handleChange} required />
+                    <Label> > Gender</Label>
                     <WrapperInputRadio>
-                        <label>
-                            <input type="radio" value="Male" name="gender" onChange={this.handleChange} /> Male
-                        </label>
-                        <label>
-                            <input type="radio" value="Female" name="gender" onChange={this.handleChange} /> Female
-                        </label>
+                        <Label>
+                            <Input type="radio" value="Male" name="gender" onChange={this.handleChange} /> Male
+                        </Label>
+                        <Label>
+                            <Input type="radio" value="Female" name="gender" onChange={this.handleChange} /> Female
+                        </Label>
                     </WrapperInputRadio>
-                    <Input name="parentsname" onChange={this.handleChange} placeholder="Parents name (-18)" />
-                    <Input name="email" onChange={this.handleChange} placeholder="Email" required />
-                    <Input name="phone" onChange={this.handleChange} placeholder="Phone" />
-                    <Input name="experience" onChange={this.handleChange} placeholder="Casting experience" />
-                    <Input name="specialskills" onChange={this.handleChange} placeholder="Special Skills" />
-                    <p>
-                        Please select what productions you would be interested in taking part in:
-                </p>
+                    <Label> > Parents name (if under 17)</Label>
+                    <Input name="parentsname" onChange={this.handleChange} />
+                    <Label> > Email address *</Label>
+                    <Input name="email" onChange={this.handleChange} required />
+                    <Label> > Phone</Label>
+                    <Input name="phone" onChange={this.handleChange} />
+                    <Label> > List any casting experience</Label>
+                    <TextArea name="experience" onChange={this.handleChange} />
+                    <Label> > Do you have any special skills? Dancing, singing, music, martial arts, etc.</Label>
+                    <TextArea name="specialskills" onChange={this.handleChange} />
+                    <Label>
+                        > Please select what productions you would be interested in taking part in:
+                    </Label>
                     {
                         this.state.interests.map((production) => {
                             return (
