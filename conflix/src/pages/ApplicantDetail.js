@@ -28,6 +28,7 @@ export default class ApplicantDetail extends Component {
                         <p key={interest.id}>{interest.value}</p>) 
                     : ''
                 }
+                <button>Select</button>
             </div>
         )
     }

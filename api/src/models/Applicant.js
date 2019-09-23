@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate');
+const Schema = mongoose.Schema;
 
-const ApplicantSchema = new mongoose.Schema({
+const ApplicantSchema = new Schema({
     firstname: {
         type: String,
         required: true
@@ -33,7 +34,8 @@ const ApplicantSchema = new mongoose.Schema({
     specialskills: {
         type: String
     },
-    interests: [Object]
+    interests: [Object],
+    movies: [{type: Schema.Types.ObjectId, ref: 'Movie'}]
 })
 
 ApplicantSchema.plugin(mongoosePaginate);
