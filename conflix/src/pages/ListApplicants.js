@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import api from '../services/api';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import ApplicantDetail from './ApplicantDetail';
 import { Title, WrapperInputRadio, Button } from '../components/styles';
 import { List, ListDetail } from './styles';
