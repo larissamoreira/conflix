@@ -13,7 +13,7 @@ export default class ApplicantDetail extends Component {
     // }
 
     render() {
-        const { applicant } = this.props;
+        const applicant = this.props.applicant
         return (
             <div className='applicant-info'>
                 <h1>{applicant.firstname} {applicant.lastname}</h1>

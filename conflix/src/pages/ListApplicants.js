@@ -92,7 +92,7 @@ export default class ListApplicants extends Component {
                     {this.state.applicants.map(applicant => (
                         <ListDetail key={applicant._id}>
                             <ApplicantDetail applicant={applicant} />
-                            <Link to={`/applicants/${applicant._id}`}>Acessar</Link>
+                            {/* <Link to={`/applicants/${applicant._id}`}>Acessar</Link> */}
                         </ListDetail>
                     ))}
                 </List>

@@ -9,7 +9,7 @@ export const List = styled.div`
 
 export const ListDetail = styled.div`
     background: #d7b6ff;
-    width: 250px;
+    // width: 250px;
     height: 300px;
     padding: 10px;
     margin: auto;
