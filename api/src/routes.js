@@ -12,9 +12,9 @@ routes.put('/applicants/:id', ApplicantController.update);
 routes.delete('/applicants/:id', ApplicantController.delete);
 
 
-routes.get('/movies', MovieController.index);
+routes.get('/movies/:id', MovieController.index);
 routes.post('/movies', MovieController.save);
-routes.get('/movies/:id', MovieController.show);
+routes.get('/movie/:id', MovieController.show);
 routes.put('/movies/:id', MovieController.update);
 routes.delete('/movies/:id', MovieController.delete);
 
