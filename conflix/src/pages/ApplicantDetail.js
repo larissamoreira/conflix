@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
-// import api from '../services/api';
+import api from '../services/api';
 
 export default class ApplicantDetail extends Component {
-    // state = {
-    //     applicant: {}
-    // };
-
-    // async componentDidMount() {
-    //     const { id } = this.props.match.params;
-    //     const response = await api.get(`/applicants/${id}`)
-    //     this.setState({ applicant: response.data })
-    // }
 
     render() {
         const applicant = this.props.applicant
@@ -28,7 +19,6 @@ export default class ApplicantDetail extends Component {
                         <p key={interest.id}>{interest.value}</p>) 
                     : ''
                 }
-                <button>Select</button>
             </div>
         )
     }

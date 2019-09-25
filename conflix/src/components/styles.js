@@ -27,7 +27,6 @@ export const Button = styled.button`
     background: transparent;
     border-radius: 3px;
     border: 2px solid #fa9f4f;
-    color: white;
     margin: 0.1em;
     padding: 0.25em 1em;
     cursor: pointer;
@@ -46,7 +45,7 @@ export const Button = styled.button`
     `;
 
 export const Form = styled.form`
-    color: white;
+    // color: white;
     display: flex;
     height: 800px;
     flex-flow: column wrap;
@@ -61,7 +60,7 @@ export const Input = styled.input`
     margin-left: 15px;
     padding: 0.5em;
     background: #ad86d5;
-    color: white;
+
     border: none;
     &::placeholder {
         color: white;

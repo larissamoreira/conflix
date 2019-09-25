@@ -15,7 +15,8 @@ const GlobalStyle = createGlobalStyle`
         padding: 10px;
         font-family: monospace;
         overflow: auto;
-        background: #313137;
+        background: whitesmoke;
+        // background: #313137;
         min-height: 90vh;
     }
 `;
