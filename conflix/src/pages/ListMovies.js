@@ -3,6 +3,9 @@ import api from '../services/api'
 import { Link } from 'react-router-dom'
 import ApplicantDetail from './ApplicantDetail';
 import Actor from '../components/Actor';
+import { Header } from '../components/Header';
+import { Container } from '../components/styles';
+import { MovieDetail, Th, Td, Table, LinkStyle, Ul } from './styles';
 
 export default class ListMovies extends React.Component {
     state = {
@@ -18,23 +21,36 @@ export default class ListMovies extends React.Component {
 
     render() {
         return (
-            <div>
-                {this.state.movies.map(movie => (
-                    <>
-                    <div>Title: {movie.title}</div>
-                    <div>
-                        {movie.actors.length > 0 ?
-                            movie.actors.map(actor =>
-                                <Actor id={actor}/>
-                            )
-                            : <p>No cast for this movie yet!</p>
-                        }
-                    </div>
-                    <Link to={`/applicants/${movie._id}`}>Find actor/actress for this movie</Link>
-                    <hr></hr>
-                    </>
-                ))}
-            </div>
+            <>
+                <Header />
+                <Container>
+                    <Table>
+                        <tr>
+                            <Th>Title</Th>
+                            <Th>Cast</Th>
+                            <Th>Action</Th>
+                        </tr>
+                        {this.state.movies.map(movie => (
+                            <tr>
+                                <Td>{movie.title}</Td>
+                                <Td>
+                                    <Ul>
+                                        {movie.actors.length > 0 ?
+                                            movie.actors.map(actor =>
+                                                <Actor id={actor} />
+                                            )
+                                            : <span>No cast for this movie yet!</span>
+                                        }
+                                    </Ul>
+                                </Td>
+                                <Td>
+                                    <LinkStyle primary href={`/applicants/${movie._id}`}>Find actor/actress</LinkStyle>
+                                </Td>
+                            </tr>
+                        ))}
+                    </Table>
+                </Container >
+            </>
         )
     }
 }

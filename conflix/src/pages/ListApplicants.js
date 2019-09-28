@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import api from '../services/api';
 // import { Link } from 'react-router-dom'
 import ApplicantDetail from './ApplicantDetail';
-import { Title, WrapperInputRadio, Button } from '../components/styles';
-import { List, ListDetail } from './styles';
+import { Title, WrapperInputRadio, Button, Container } from '../components/styles';
+import { List, ListDetail} from './styles';
 // import Filter from '../components/Filter';
 import styled, { css } from 'styled-components';
+import { Header } from '../components/Header';
 
 
 export default class ListApplicants extends Component {
     state = {
-        toggleSelect: false,
         movie: {},
         applicants: [],
         applicantsInfo: {},
@@ -45,17 +45,18 @@ export default class ListApplicants extends Component {
     findMovie = async () => {
         let { movieId } = this.props.match.params;
         const response = await api.get(`/movie/${movieId}`)
-        this.setState({movie: response.data})
+        this.setState({ movie: response.data })
     }
 
     loadApplicants = async (page = 1) => {
         const response = await api.get(`/applicants?page=${page}`)
         let { docs, ...applicantsInfo } = response.data;
 
+        // Filtering by gender
         docs = this.state.gender === 'All' ? docs : docs.filter(applicant => applicant.gender == this.state.gender)
 
+        // Filtering by types of production
         let productionsChecked = this.state.interests.filter(interest => interest.isChecked);
-
         let filteredDocs = []
         productionsChecked.length !== 0 ?
             productionsChecked.map(production =>
@@ -93,21 +94,25 @@ export default class ListApplicants extends Component {
     }
 
     selectActor = async (event, applicantId) => {
+
+        // Creating list of selected actors
         const response = await api.get(`/applicants/${applicantId}`);
         const actor = response.data;
         this.setState(prevState => ({
             actorsSelected: [...prevState.actorsSelected, actor]
         }))
 
+        // Request to push actor into the movie
         let { movieId } = this.props.match.params;
         const response2 = await api.put(`/movies/${movieId}`, {
             actors: actor
         })
 
-        let index = this.state.applicants.map(function(e) { return e._id; }).indexOf(applicantId);
+        // Removing selected actors from the list of applicants.
+        let index = this.state.applicants.map(function (e) { return e._id; }).indexOf(applicantId);
         let array = [...this.state.applicants]
         array.splice(index, 1)
-        this.setState({applicants: array})
+        this.setState({ applicants: array })
     }
 
     render() {
@@ -115,27 +120,31 @@ export default class ListApplicants extends Component {
 
         return (
             <React.Fragment>
-                <Title>Movie: {movie.title}</Title>
-                <Title>Submissions</Title>
+                <Header />
+                {/* <h3>Movie: {movie.title}</h3>
+                <h4>Submissions</h4> */}
                 {/* <Filter interests={this.state.interests} handleCheck={this.handleCheck} handleChange={this.handleChange} /> */}
                 <>
-                { actorsSelected ? 
-                    actorsSelected.map(actor => <div>{actor.firstname}</div>)
-                    : ' '
-                }
+                    {actorsSelected ?
+                        actorsSelected.map(actor => <div>{actor.firstname}</div>)
+                        : ' '
+                    }
                 </>
-                <List>
-                    {this.state.applicants.map(applicant => (
-                        <ListDetail key={applicant._id}>
-                            <ApplicantDetail applicant={applicant} />
-                            <Button disabled={this.state.toggleSelect} onClick={(e) => this.selectActor(e, applicant._id)}>Select</Button>
-                        </ListDetail>
-                    ))}
-                </List>
+                <Container>
+                    <List>
+                        {this.state.applicants.map(applicant => (
+                            <ListDetail key={applicant._id}>
+                                <ApplicantDetail applicant={applicant} />
+                                <Button primary onClick={(e) => this.selectActor(e, applicant._id)}>Select</Button>
+                            </ListDetail>
+                        ))}
+                    </List>
+                </Container>
                 {/* <WrapperInputRadio>
                     <Button primary disabled={page === 1} onClick={this.prevPage}>Back</Button>
                     <Button primary disabled={page === applicantsInfo.pages} onClick={this.nextPage}>Next</Button>
                 </WrapperInputRadio> */}
+
             </React.Fragment>
         )
     }

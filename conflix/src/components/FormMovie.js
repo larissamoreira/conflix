@@ -1,6 +1,7 @@
 import React from 'react';
 import api from '../services/api';
 import { Container } from './styles';
+import { Header } from './Header';
 
 class FormMovie extends React.Component {
     state = {
@@ -33,6 +34,7 @@ class FormMovie extends React.Component {
     render() {
         return (
             <Container>
+                <Header/>
                 <form onSubmit={this.handleSubmit}>
                     <label> > Title *</label>
                     <input name="title" onChange={this.handleChange} />

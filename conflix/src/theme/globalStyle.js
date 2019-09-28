@@ -9,14 +9,11 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: inherit;
     }
     body{
-        @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-        max-width: 950px;
-        margin: 0 auto;
-        padding: 10px;
-        font-family: monospace;
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+        margin: 0;
+        font-family: 'Roboto Mono', monospace;
         overflow: auto;
-        background: whitesmoke;
-        // background: #313137;
+        background: white;
         min-height: 90vh;
     }
 `;

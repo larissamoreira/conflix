@@ -3,16 +3,24 @@ import styled, { css } from 'styled-components';
 export const Container = styled.div`
     padding: 0 30px;
     border-radius: 20px;
-    max-width: 90%;
-    margin: 0 auto; 
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 10px;
 
     @media(max-width: 768px) {
         max-width: 100%;
     }
 `
 
+export const HeaderStyle = styled.header`
+    background: #313137;
+    height: 150px;
+`
+
 export const Title = styled.h1`
     color: #fa9f4f;
+    margin: 0;
+    padding: 20px;
     text-align: center;
 `
 
@@ -45,7 +53,6 @@ export const Button = styled.button`
     `;
 
 export const Form = styled.form`
-    // color: white;
     display: flex;
     height: 800px;
     flex-flow: column wrap;
