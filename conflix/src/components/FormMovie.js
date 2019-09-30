@@ -21,6 +21,7 @@ class FormMovie extends React.Component {
         api.post('/movies', { ...movie })
             .then(res => {
                 console.log(res);
+                this.props.history.push(`/movies/${userId}`)
             })
             .catch(err => {
                 console.log(err);
@@ -33,14 +34,16 @@ class FormMovie extends React.Component {
 
     render() {
         return (
-            <Container>
-                <Header/>
-                <form onSubmit={this.handleSubmit}>
-                    <label> > Title *</label>
-                    <input name="title" onChange={this.handleChange} />
-                    <button>SUBMIT</button>
-                </form>
-            </Container>
+            <>
+                <Header />
+                <Container>
+                    <form onSubmit={this.handleSubmit}>
+                        <label> > Title *</label>
+                        <input name="title" onChange={this.handleChange} />
+                        <button>SUBMIT</button>
+                    </form>
+                </Container>
+            </>
         )
     }
 }

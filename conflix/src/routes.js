@@ -4,11 +4,13 @@ import Main from './pages/Main';
 import ListApplicants from './pages/ListApplicants';
 import FormMovie from './components/FormMovie';
 import ListMovies from './pages/ListMovies'
+import SignUp from './pages/SignUp';
 
 const Routes = () => (
     <BrowserRouter>
         <Switch>
-            <Route exact path='/' component={Main} />
+            <Route path='/signup' component={SignUp} />
+            <Route exact path='/main' component={Main} />
             <Route exact path='/applicants/:movieId' component={ListApplicants} />
             <Route path='/create/:userId' component={FormMovie} />
             <Route path='/movies/:userId' component={ListMovies} />
