@@ -64,15 +64,11 @@ class FormApplicant extends Component {
         return (
             <Container>
                 <Form onSubmit={this.handleSubmit}>
-                    <Label> > Name *</Label>
-                    <WrapperInput>
-
-                        <Input name="firstname" onChange={this.handleChange} placeholder="First name" required />
-                        <Input name="lastname" onChange={this.handleChange} placeholder="Last name" required />
-                    </WrapperInput>
-                    <Label> > Age</Label>
+                    <Label>Full Name *</Label>
+                    <Input name="fullname" onChange={this.handleChange} required />
+                    <Label>Age</Label>
                     <Input name="age" onChange={this.handleChange} required />
-                    <Label> > Gender</Label>
+                    <Label>Gender</Label>
                     <WrapperInputRadio>
                         <Label>
                             <Input type="radio" value="Male" name="gender" onChange={this.handleChange} /> Male
@@ -81,18 +77,18 @@ class FormApplicant extends Component {
                             <Input type="radio" value="Female" name="gender" onChange={this.handleChange} /> Female
                         </Label>
                     </WrapperInputRadio>
-                    <Label> > Parents name (if under 17)</Label>
+                    <Label>Parents name (if under 17)</Label>
                     <Input name="parentsname" onChange={this.handleChange} />
-                    <Label> > Email address *</Label>
+                    <Label>Email address *</Label>
                     <Input name="email" onChange={this.handleChange} required />
-                    <Label> > Phone</Label>
+                    <Label>Phone</Label>
                     <Input name="phone" onChange={this.handleChange} />
-                    <Label> > List any casting experience</Label>
+                    <Label>List any casting experience</Label>
                     <TextArea name="experience" onChange={this.handleChange} />
-                    <Label> > Do you have any special skills? Dancing, singing, music, martial arts, etc.</Label>
+                    <Label>Do you have any special skills? Dancing, singing, music, martial arts, etc.</Label>
                     <TextArea name="specialskills" onChange={this.handleChange} />
                     <Label>
-                        > Please select what productions you would be interested in taking part in:
+                        Please select what productions you would be interested in taking part in:
                     </Label>
                     {
                         this.state.interests.map((production) => {

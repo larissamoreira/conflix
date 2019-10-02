@@ -6,7 +6,6 @@ const InputCheckbox = styled.input``
 const Span = styled.span``
 
 const Label = styled.label` 
-    margin-left: 15px;
     & ${InputCheckbox}:checked + ${Span} {
         text-decoration: line-through;
         text-decoration-color: #fa9f4f;

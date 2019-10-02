@@ -32,7 +32,7 @@ export default class ApplicantDetail extends Component {
         return (
             <Card>
                 <ItemRow>
-                    <Span>{applicant.firstname} {applicant.lastname} </Span>
+                    <Span>{applicant.fullname} </Span>
                     <Span>{applicant.gender}</Span>
                     <Span>{applicant.age}</Span>
                     <Span>{applicant.phone}</Span>

@@ -3,11 +3,7 @@ const mongoosePaginate = require('mongoose-paginate');
 const Schema = mongoose.Schema;
 
 const ApplicantSchema = new Schema({
-    firstname: {
-        type: String,
-        required: true
-    },
-    lastname: {
+    fullname: {
         type: String,
         required: true
     },

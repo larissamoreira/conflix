@@ -53,6 +53,9 @@ export const Button = styled.button`
     `;
 
 export const Form = styled.form`
+    margin: 0 auto;
+    width: 60%;
+    font-size: 12px;
     display: flex;
     height: 800px;
     flex-flow: column wrap;
@@ -64,17 +67,16 @@ export const Form = styled.form`
     `;
 
 export const Input = styled.input`
-    margin-left: 15px;
+    width: 100%;
     padding: 0.5em;
-    background: #ad86d5;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1.6px solid #ad86d5;
 
-    border: none;
-    &::placeholder {
-        color: white;
-        font-family: monospace;
-    }
-    &::focus {
+    &:focus {
         outline: none;
+    }
     }
     `;
 
@@ -83,7 +85,7 @@ export const Label = styled.label`
 ` 
 
 export const TextArea = styled(Input)`
-    padding: 20px 5px;
+    
 `
 
 export const WrapperInput = styled.div`
@@ -104,7 +106,7 @@ export const WrapperInput = styled.div`
 `
 
 export const WrapperInputRadio = styled(WrapperInput)`
-    width: 30%;
+    width: 20%;
     @media(max-width: 768px) {
         flex-flow: column wrap;
         height: 20px;    
