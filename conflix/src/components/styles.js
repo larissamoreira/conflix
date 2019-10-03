@@ -24,9 +24,10 @@ export const Title = styled.h1`
     text-align: center;
 `
 
-export const Subtitle = styled.h2`
-    color: #fa9f4f;
-    text-align: start;
+export const Subtitle = styled.h3`
+    margin: 0;
+    color: #c7ad96;
+    text-align: center;
 `
 
 export const Button = styled.button`

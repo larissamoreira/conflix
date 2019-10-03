@@ -11,7 +11,7 @@ routes.get('/applicants/:id', ApplicantController.show);
 routes.put('/applicants/:id', ApplicantController.update);
 routes.delete('/applicants/:id', ApplicantController.delete);
 
-
+routes.get('/movies/', MovieController.index);
 routes.get('/movies/:id', MovieController.index);
 routes.post('/movies', MovieController.save);
 routes.get('/movie/:id', MovieController.show);

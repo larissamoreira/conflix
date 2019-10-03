@@ -4,7 +4,12 @@ const Movie = mongoose.model('Movie');
 
 module.exports = {
     async index(req, res) {
-        const movies = await Movie.find({director: req.params.id});
+        let movies = []
+        if ('id' in req.params) {
+            movies = await Movie.find({director: req.params.id})
+        } else {
+            movies = await Movie.find()
+        }
         return res.json(movies);
     },
 

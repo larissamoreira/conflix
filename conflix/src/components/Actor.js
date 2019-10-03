@@ -14,7 +14,7 @@ class Actor extends React.Component {
 
     render() {
         return(
-            <li>{this.state.applicant.firstname}</li>
+            <li>{this.state.applicant.fullname}</li>
         )
     }
 }

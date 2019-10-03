@@ -28,6 +28,7 @@ module.exports = {
     },
 
     async delete(req, res) {
+        // TODO: Also delete director movies if director is deleted
         await Director.findByIdAndRemove(req.params.id)
         return res.send('');
     }

@@ -4,8 +4,8 @@ import { Header } from '../components/Header';
 
 const Main = () => (
     <>
-    <Header />
-    <FormApplicant />
+        <Header />
+        <FormApplicant />
     </>
 )
 

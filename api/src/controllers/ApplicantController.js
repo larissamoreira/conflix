@@ -30,6 +30,7 @@ module.exports = {
 
     async delete(req, res) {
         await Applicant.findByIdAndRemove(req.params.id)
+        // TODO: Remove actor from the movie if actor is deleted from db.
         return res.send('');
     }
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import api from '../services/api';
 import styled from 'styled-components';
 
 const Card = styled.div`

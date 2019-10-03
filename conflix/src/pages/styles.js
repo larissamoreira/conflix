@@ -3,7 +3,6 @@ import styled, { css } from 'styled-components';
 export const Nav = styled.nav`
     justify-content: center;
     display: flex;
-    // color: white;
 `
 
 export const LinkStyle = styled.a`

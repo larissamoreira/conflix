@@ -16,39 +16,42 @@ export default class ListMovies extends React.Component {
         const { userId } = this.props.match.params;
         const response = await api.get(`/movies/${userId}`)
         this.setState({ movies: response.data })
-        console.log(this.state.movies)
     }
 
     render() {
+        const { movies } = this.state;
+
         return (
             <>
                 <Header />
                 <Container>
-                    <Table>
-                        <tr>
-                            <Th>Title</Th>
-                            <Th>Cast</Th>
-                            <Th>Action</Th>
-                        </tr>
-                        {this.state.movies.map(movie => (
+                    {movies.length > 0 ?
+                        <Table>
                             <tr>
-                                <Td>{movie.title}</Td>
-                                <Td>
-                                    <Ul>
-                                        {movie.actors.length > 0 ?
-                                            movie.actors.map(actor =>
-                                                <Actor id={actor} />
-                                            )
-                                            : <span>No cast for this movie yet!</span>
-                                        }
-                                    </Ul>
-                                </Td>
-                                <Td>
-                                    <LinkStyle primary href={`/applicants/${movie._id}`}>Find actor/actress</LinkStyle>
-                                </Td>
+                                <Th>Title</Th>
+                                <Th>Cast</Th>
+                                <Th>Action</Th>
                             </tr>
-                        ))}
-                    </Table>
+                            {movies.map(movie => (
+                                <tr>
+                                    <Td>{movie.title}</Td>
+                                    <Td>
+                                        <Ul>
+                                            {movie.actors.length > 0 ?
+                                                movie.actors.map(actor =>
+                                                    <Actor id={actor} />
+                                                )
+                                                : <span>No cast for this movie yet!</span>
+                                            }
+                                        </Ul>
+                                    </Td>
+                                    <Td>
+                                        <LinkStyle primary href={`/applicants/${movie._id}`}>Find actor/actress</LinkStyle>
+                                    </Td>
+                                </tr>
+                            ))}
+                        </Table>
+                        : 'Oops... You do not have movies yet.'}
                 </Container >
             </>
         )
