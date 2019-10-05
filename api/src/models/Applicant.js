@@ -12,7 +12,7 @@ const ApplicantSchema = new Schema({
         required: true
     },
     gender: {
-        type: String, enum: ["Male", "Female"]
+        type: String, enum: ["Male", "Female", "Other"]
     },
     parentsname: {
         type: String

@@ -20,6 +20,11 @@ export const LinkStyle = styled.a`
     `}
 `
 
+export const LinkTitle = styled.a`
+    color: #fea04f;
+    text-decoration: none;
+`
+
 export const List = styled.div`
     display: flex;
     min-height: 700px;

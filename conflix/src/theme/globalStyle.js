@@ -9,13 +9,11 @@ const GlobalStyle = createGlobalStyle`
         box-sizing: inherit;
     }
     body{
-        // @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
-        @import url('https://fonts.googleapis.com/css?family=Assistant&display=swap');
         margin: 0;
-        // font-family: 'Roboto Mono', monospace;
-        font-family: 'Assistant', sans-serif;
+        font-family: 'Roboto', monospace;
+        // font-family: 'Assistant', sans-serif;
         overflow: auto;
-        background: white;
+        // background: white;
         min-height: 90vh;
     }
 `;
