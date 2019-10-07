@@ -6,6 +6,7 @@ import Actor from '../components/Actor';
 import { Header } from '../components/Header';
 import { Container } from '../components/styles';
 import { MovieDetail, Th, Td, Table, LinkStyle, Ul } from './styles';
+import FormMovie from '../components/FormMovie';
 
 export default class ListMovies extends React.Component {
     state = {
@@ -25,6 +26,7 @@ export default class ListMovies extends React.Component {
             <>
                 <Header />
                 <Container>
+                    <FormMovie/>
                     {movies.length > 0 ?
                         <Table>
                             <tr>

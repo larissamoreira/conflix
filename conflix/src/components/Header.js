@@ -7,7 +7,7 @@ const userId = '5d891f7b2499030680c826b5';
 
 export const Header = () => (
     <HeaderStyle>
-        <Title><LinkTitle href={'/main'}>Conflix Casting</LinkTitle></Title>
+        <Title><LinkTitle href={'/'}>Conflix Casting</LinkTitle></Title>
         <Subtitle>CASTING CALL FOR 2018/2019</Subtitle>
         {isAuthenticated ?
             <Nav>

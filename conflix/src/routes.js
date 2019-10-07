@@ -11,7 +11,7 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route path='/signup' component={SignUp} />
-            <Route exact path='/main' component={Main} />
+            <Route exact path='/' component={Main} />
             <Route exact path='/applicants/:movieId' component={ListApplicants} />
             {/* <Route path='/applicants/:applicantId' component={ApplicantDetail} /> */}
             <Route path='/create/:userId' component={FormMovie} />
