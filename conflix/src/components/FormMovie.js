@@ -1,7 +1,6 @@
 import React from 'react';
 import api from '../services/api';
 import { Modal, Backdrop, Fade, Button, FormControl, Input, InputLabel } from '@material-ui/core';
-import { Header } from './Header';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -18,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function FormMovie() {
+export default function FormMovie(props) {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     const [title, setTitle] = React.useState('');
@@ -32,26 +31,24 @@ export default function FormMovie() {
     };
 
 
-    const handleSubmit = (event, props, title) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
-        // const { userId } = props.match.params;
+        let userId = props.userId;
 
-        // const movie = {
-        //     title: title,
-        //     director: userId
-        // }
-        console.log('sadasd')
-        console.log(title)
+        const movie = {
+            title: title,
+            director: userId
+        }
 
-        // api.post('/movies', { ...movie })
-        //     .then(res => {
-        //         console.log(res);
-        //         props.history.push(`/movies/${userId}`)
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     })
+        api.post('/movies', { ...movie })
+            .then(res => {
+                console.log(res);
+                setOpen(false);
+                window.location.reload();
+            }).catch(err => {
+                console.log(err)
+            })
     }
 
     const handleChange = event => {
@@ -59,7 +56,7 @@ export default function FormMovie() {
     }
 
     return (
-        <div>
+        <div style={{textAlign:'center', margin: '1em'}}>
             <Button color="primary" variant="outlined" onClick={handleOpen}>
                 Create a movie
             </Button>
@@ -80,7 +77,7 @@ export default function FormMovie() {
                         <h3 id="transition-modal-title">New Movie</h3>
                         <form>
                             <FormControl>
-                                <InputLabel InputLabelProps={{ style: { fontSize: 10 } }} htmlFor="title">Title</InputLabel>
+                                <InputLabel htmlFor="title">Title</InputLabel>
                                 <Input id="title" name="title" aria-describedby="title" onChange={(event) => setTitle(event.target.value)} />
                             </FormControl>
                             <Button color="secondary" onClick={handleSubmit}>

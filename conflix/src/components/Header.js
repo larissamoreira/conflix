@@ -11,7 +11,6 @@ export const Header = () => (
         <Subtitle>CASTING CALL FOR 2018/2019</Subtitle>
         {isAuthenticated ?
             <Nav>
-                <LinkStyle href={`/create/${userId}`}>Create movie</LinkStyle>
                 <LinkStyle href={`/movies/${userId}`}>My movies</LinkStyle>
             </Nav>
             : ' '

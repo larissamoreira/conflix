@@ -10,23 +10,24 @@ import FormMovie from '../components/FormMovie';
 
 export default class ListMovies extends React.Component {
     state = {
-        movies: []
+        movies: [],
+        userId: ''
     };
 
     async componentDidMount() {
-        const { userId } = this.props.match.params;
-        const response = await api.get(`/movies/${userId}`)
+        this.setState({userId: this.props.match.params})
+        const response = await api.get(`/movies/${this.state.userId}`)
         this.setState({ movies: response.data })
     }
 
     render() {
-        const { movies } = this.state;
+        const { movies, userId } = this.state;
 
         return (
             <>
                 <Header />
                 <Container>
-                    <FormMovie/>
+                    <FormMovie user={userId}/>
                     {movies.length > 0 ?
                         <Table>
                             <tr>
