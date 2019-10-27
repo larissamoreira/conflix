@@ -34,8 +34,7 @@ export const List = styled.div`
 `
 
 export const ListDetail = styled.div`
-    background: #0000008a;
-    color: white;
+    color: grey;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

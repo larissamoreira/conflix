@@ -6,7 +6,7 @@ const Card = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    max-height: 200px;
+    max-height: 300px;
 `
 
 const ItemRow = styled.div`
@@ -24,6 +24,10 @@ export const Span = styled.span`
     font-size: 13px;
 `
 
+export const Name = styled.p`
+
+`
+
 export default class ApplicantDetail extends Component {
 
     render() {
@@ -31,7 +35,7 @@ export default class ApplicantDetail extends Component {
         return (
             <Card>
                 <ItemRow>
-                    <Span>{applicant.fullname} </Span>
+                    <Name>{applicant.fullname} </Name>
                     <Span>{applicant.gender}</Span>
                     <Span>{applicant.age}</Span>
                     <Span>{applicant.phone}</Span>

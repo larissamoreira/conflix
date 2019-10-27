@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Director = mongoose.model('Director');
 const Movie = mongoose.model('Movie');
+const Applicant = mongoose.model('Applicant');
 
 module.exports = {
     async index(req, res) {
@@ -33,6 +34,9 @@ module.exports = {
         if (!exists) {
             movie.actors.push(req.body.actors)
             movie.save()
+            const actor = await Applicant.findById(new_actor._id)
+            actor.movies.push(movie);
+            actor.save()
         }
         return res.json(movie)
     },

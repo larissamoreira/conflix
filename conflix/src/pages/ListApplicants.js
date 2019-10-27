@@ -3,7 +3,7 @@ import api from '../services/api';
 // import { Link } from 'react-router-dom'
 import ApplicantDetail from './ApplicantDetail';
 import { Title, WrapperInputRadio, Button, Container } from '../components/styles';
-import { List, ListDetail} from './styles';
+import { List, ListDetail } from './styles';
 // import Filter from '../components/Filter';
 import styled, { css } from 'styled-components';
 import { Header } from '../components/Header';
@@ -51,6 +51,21 @@ export default class ListApplicants extends Component {
     loadApplicants = async (page = 1) => {
         const response = await api.get(`/applicants?page=${page}`)
         let { docs, ...applicantsInfo } = response.data;
+
+        // docs.map(
+        //     applicant =>
+        //         applicant.movies.map(movie =>
+        //             console.log(movie)
+        //         )
+        // )
+
+        let aplicants_filtrados = []
+
+        docs.map(doc => doc.movies.map( movie => movie === this.state.movie._id ?  '' : aplicants_filtrados.push(doc)))
+        
+        docs = aplicants_filtrados
+
+        // console.log(teste)
 
         // Filtering by gender
         docs = this.state.gender === 'All' ? docs : docs.filter(applicant => applicant.gender == this.state.gender)

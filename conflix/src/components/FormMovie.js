@@ -11,10 +11,14 @@ const useStyles = makeStyles(theme => ({
     },
     paper: {
         backgroundColor: theme.palette.background.paper,
-        border: '2px solid #000',
+        border: '1px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    form: {
+        display: 'flex',
+        flexDirection: 'column',
+    }
 }));
 
 export default function FormMovie(props) {
@@ -43,12 +47,12 @@ export default function FormMovie(props) {
 
         api.post('/movies', { ...movie })
             .then(res => {
-                console.log(res);
-                setOpen(false);
-                window.location.reload();
+                console.log(res);                
             }).catch(err => {
                 console.log(err)
             })
+        setOpen(false);
+        window.location.reload();
     }
 
     const handleChange = event => {
@@ -75,7 +79,7 @@ export default function FormMovie(props) {
                 <Fade in={open}>
                     <div className={classes.paper}>
                         <h3 id="transition-modal-title">New Movie</h3>
-                        <form>
+                        <form className={classes.form}>
                             <FormControl>
                                 <InputLabel htmlFor="title">Title</InputLabel>
                                 <Input id="title" name="title" aria-describedby="title" onChange={(event) => setTitle(event.target.value)} />

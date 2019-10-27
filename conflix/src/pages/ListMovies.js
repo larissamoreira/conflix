@@ -7,6 +7,7 @@ import { Header } from '../components/Header';
 import { Container } from '../components/styles';
 import { MovieDetail, Th, Td, Table, LinkStyle, Ul } from './styles';
 import FormMovie from '../components/FormMovie';
+import { Button } from '@material-ui/core';
 
 export default class ListMovies extends React.Component {
     state = {
@@ -15,9 +16,24 @@ export default class ListMovies extends React.Component {
     };
 
     async componentDidMount() {
-        this.setState({userId: this.props.match.params})
+        this.setState({ userId: this.props.match.params })
+        this.loadMovies()
+    }
+
+    async loadMovies() {
         const response = await api.get(`/movies/${this.state.userId}`)
         this.setState({ movies: response.data })
+    }
+
+    deleteMovie = (event, movieId) => {
+        event.preventDefault();
+        api.delete(`/movies/${movieId}`)
+            .then(res => {
+                console.log(res);
+                window.location.reload();
+            }).catch(err => {
+                console.log(err)
+            })
     }
 
     render() {
@@ -27,7 +43,7 @@ export default class ListMovies extends React.Component {
             <>
                 <Header />
                 <Container>
-                    <FormMovie user={userId}/>
+                    <FormMovie user={userId} />
                     {movies.length > 0 ?
                         <Table>
                             <tr>
@@ -44,12 +60,14 @@ export default class ListMovies extends React.Component {
                                                 movie.actors.map(actor =>
                                                     <Actor id={actor} />
                                                 )
-                                                : <span>No cast for this movie yet!</span>
+                                                : <span>No cast</span>
                                             }
                                         </Ul>
                                     </Td>
                                     <Td>
-                                        <LinkStyle primary href={`/applicants/${movie._id}`}>Find actor/actress</LinkStyle>
+                                        {/* <LinkStyle primary href={`/applicants/${movie._id}`}>Find actor/actress</LinkStyle> */}
+                                        <Button color="secondary" onClick={e => this.props.history.push(`/applicants/${movie._id}`)}>Find actor</Button>
+                                        <Button color="primary" onClick={e => this.deleteMovie(e, movie._id)}>Delete</Button>
                                     </Td>
                                 </tr>
                             ))}
