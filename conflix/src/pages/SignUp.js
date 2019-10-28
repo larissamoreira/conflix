@@ -24,9 +24,11 @@ class SignUp extends React.Component {
             password: this.state.password
         }
 
+        alert(director.password)
+
         api.post('/directors', { ...director })
             .then(res => {
-                this.props.history.push(`/main`)
+                this.props.history.push('/')
                 console.log(res);
             })
             .catch(err => {
@@ -45,7 +47,7 @@ class SignUp extends React.Component {
                         <label>Email</label>
                         <input type="email" name="email" onChange={this.handleChange} />
                         <label>Password</label>
-                        <input type="password" onChange={this.handleChange} />
+                        <input type="password" name="password" onChange={this.handleChange} />
                         <Button>Submit</Button>
                     </form>
                 </Container>

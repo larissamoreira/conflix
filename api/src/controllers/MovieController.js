@@ -15,8 +15,8 @@ module.exports = {
     },
 
     async save(req, res) {
-        const director = await Director.findById(req.body.director);
         const new_movie = await Movie.create(req.body);
+        const director = await Director.findById(req.body.director);
         director.movies.push(new_movie);
         director.save();
         return res.json(new_movie);

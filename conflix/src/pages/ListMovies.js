@@ -16,11 +16,7 @@ export default class ListMovies extends React.Component {
     };
 
     async componentDidMount() {
-        this.setState({ userId: this.props.match.params })
-        this.loadMovies()
-    }
-
-    async loadMovies() {
+        this.setState({ userId: this.props.match.params.userId })
         const response = await api.get(`/movies/${this.state.userId}`)
         this.setState({ movies: response.data })
     }

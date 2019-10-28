@@ -3,7 +3,7 @@ import { Nav, LinkStyle, LinkTitle } from '../pages/styles';
 import React from 'react'
 import isAuthenticated from '../services/authHelper';
 
-const userId = '5d891f7b2499030680c826b5';
+const userId = '5db6fb318f0df0195d352e8e';
 
 export const Header = () => (
     <HeaderStyle>

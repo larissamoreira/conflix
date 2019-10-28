@@ -38,29 +38,24 @@ export default function FormMovie(props) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        let userId = props.userId;
+        let user = props.user;
 
         const movie = {
             title: title,
-            director: userId
+            director: user
         }
 
         api.post('/movies', { ...movie })
             .then(res => {
-                console.log(res);                
+                console.log(res);
+                window.location.reload();
             }).catch(err => {
                 console.log(err)
             })
-        setOpen(false);
-        window.location.reload();
-    }
-
-    const handleChange = event => {
-        this.setTitle(event.target.value);
     }
 
     return (
-        <div style={{textAlign:'center', margin: '1em'}}>
+        <div style={{ textAlign: 'center', margin: '1em' }}>
             <Button color="primary" variant="outlined" onClick={handleOpen}>
                 Create a movie
             </Button>
